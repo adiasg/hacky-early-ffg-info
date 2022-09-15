@@ -19,8 +19,12 @@ def get_best_checkpoints(proto_array):
     best_unrealized_finalized_epoch = -1
     best_unrealized_justified_blocks = []
     best_unrealized_finalized_blocks = []
-    
+
     for node in nodes:
+        if node['unrealized_justified_checkpoint'] is None:
+            continue
+        if node['unrealized_finalized_checkpoint'] is None:
+            continue
         unrealized_justified_epoch = int(node['unrealized_justified_checkpoint']['epoch'])
         unrealized_finalized_epoch = int(node['unrealized_finalized_checkpoint']['epoch'])
         best_unrealized_justified_epoch = max(unrealized_justified_epoch, best_unrealized_justified_epoch)
@@ -30,6 +34,11 @@ def get_best_checkpoints(proto_array):
         block_node = nodes[i]
         block_node['block_node_index'] = i
         block_node['block_root'] = inv_indices[i]
+        if nodes[i]['unrealized_justified_checkpoint'] is None:
+            continue
+        if nodes[i]['unrealized_finalized_checkpoint'] is None:
+            continue
+
         if int(nodes[i]['unrealized_justified_checkpoint']['epoch']) == best_unrealized_justified_epoch:
             best_unrealized_justified_blocks.append(block_node)
         if int(nodes[i]['unrealized_finalized_checkpoint']['epoch']) == best_unrealized_finalized_epoch:
