@@ -38,9 +38,9 @@ def get_best_checkpoints(proto_array):
     return best_unrealized_justified_epoch, best_unrealized_justified_blocks, best_unrealized_finalized_epoch, best_unrealized_finalized_blocks
 
 def check_fc():
-    r = httpx.get(LIGHTHOUSE_API_ENDPOINT+'/lighthouse/proto_array', headers=headers)
+    r = httpx.get(LIGHTHOUSE_API_ENDPOINT+'/lighthouse/proto_array')
     proto_array = r.json()['data']
-    r = httpx.get(LIGHTHOUSE_API_ENDPOINT+'/eth/v1/beacon/states/head/finality_checkpoints', headers=headers)
+    r = httpx.get(LIGHTHOUSE_API_ENDPOINT+'/eth/v1/beacon/states/head/finality_checkpoints')
     realized_checkpoints = r.json()['data']
 
     best_unrealized_justified_epoch, best_unrealized_justified_blocks, best_unrealized_finalized_epoch, best_unrealized_finalized_blocks = get_best_checkpoints(proto_array)
