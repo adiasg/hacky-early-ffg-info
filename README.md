@@ -15,7 +15,7 @@ Clone the repo. Venv if you want. Then `pip install httpx`.
 
 The script queries the consensus client every 6 seconds, and outputs in the terminal like this:
 
-![image](https://user-images.githubusercontent.com/25324105/190312329-420acc03-09b2-4531-af77-86a5268f4bd1.png)
+![image](https://user-images.githubusercontent.com/25324105/190313363-e5b9b5fe-e0b9-4f60-a022-8c2193129a8e.png)
 
 Explanation of output:
 - The first 2 lines give information about current time, slot, slot in epoch, epoch etc.
