@@ -76,7 +76,6 @@ while(1):
     current_slot = int((time.time() - GENESIS_TIME) // 12)
     slot_in_epoch = current_slot%32
     current_epoch = int(current_slot//32)
-    print(f"Time: {datetime.datetime.now()}")
     print(f"Current slot: {current_slot}, {slot_in_epoch}/32\tCurrent epoch: {current_epoch}\tTime: {datetime.datetime.now()}")
     realized_checkpoints, justified_info, finalized_info = check_fc()
     print(f"Justified - R: {realized_checkpoints['current_justified']['epoch']}, U: {justified_info['Justified epoch']}")
